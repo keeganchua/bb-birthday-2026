@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday bb! 🟡🔵</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comic+Neue:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -18,19 +18,21 @@
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      user-select: none;
     }
 
-    /* Better looking falling bananas */
+    /* More realistic falling bananas */
     .banana {
       position: fixed;
-      width: 18px;
-      height: 42px;
+      width: 22px;
+      height: 50px;
       background: #ffed4e;
-      border-radius: 9px 9px 3px 3px;
-      top: -50px;
-      animation: bananaFloat 7s linear infinite;
+      border-radius: 10px 10px 3px 3px;
+      top: -60px;
+      animation: bananaFloat linear infinite;
       z-index: 1;
       clip-path: polygon(0% 0%, 100% 0%, 95% 90%, 80% 100%, 20% 100%, 5% 90%);
+      opacity: 0.9;
     }
 
     .banana::before {
@@ -45,10 +47,18 @@
     }
 
     @keyframes bananaFloat {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+        opacity: 0;
+      }
       10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(120vh) rotate(720deg); opacity: 0; }
+      50% {
+        transform: translateX(40px) translateY(60vh) rotate(360deg) scale(1.1);
+      }
+      100% {
+        transform: translateX(-40px) translateY(120vh) rotate(720deg) scale(0.9);
+        opacity: 0;
+      }
     }
 
     .container {
@@ -61,7 +71,14 @@
       padding: 20px;
     }
 
-    /* Starting page with Minion GIF - NO "Tap Me" overlay */
+    /* Minion font applied */
+    .gift-text h1, .page h2, .final-message h2 {
+      font-family: 'Luckiest Guy', cursive;
+      color: #1976d2;
+      letter-spacing: 2px;
+    }
+
+    /* Gift setup */
     .gift-wrapper {
       position: relative;
       width: 90%;
@@ -98,15 +115,11 @@
       display: block;
     }
 
-    /* Minion-style font for headings */
     .gift-text h1 {
-      font-family: 'Comic Neue', cursive;
-      color: #1976d2;
       font-size: 48px;
       font-weight: 700;
       margin-bottom: 18px;
       text-shadow: 4px 4px 8px rgba(255,235,59,0.8);
-      letter-spacing: 2px;
     }
 
     .gift-text p {
@@ -126,11 +139,9 @@
       font-size: 22px;
       border-radius: 50px;
       cursor: pointer;
-      font-family: 'Comic Neue', cursive;
-      font-weight: 700;
+      font-family: 'Luckiest Guy', cursive;
       box-shadow: 0 15px 35px rgba(33,150,243,0.4);
       transition: all 0.3s ease;
-      letter-spacing: 1px;
     }
 
     .open-btn:hover {
@@ -139,7 +150,6 @@
       color: #fff;
     }
 
-    /* Card pages */
     .card-container {
       display: none;
       width: 100%;
@@ -170,16 +180,6 @@
       overflow: hidden;
     }
 
-    .page::before {
-      content: '🍌';
-      position: absolute;
-      font-size: 100px;
-      top: -30px;
-      right: -20px;
-      opacity: 0.1;
-      z-index: 1;
-    }
-
     .page.active {
       display: block;
     }
@@ -187,30 +187,6 @@
     @keyframes slideIn {
       from { opacity: 0; transform: translateX(50px); }
       to { opacity: 1; transform: translateX(0); }
-    }
-
-    .step-indicator {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 25px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .step-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(33,150,243,0.3);
-      transition: all 0.3s ease;
-      border: 3px solid #ffeb3b;
-    }
-
-    .step-dot.active {
-      background: #2196f3;
-      transform: scale(1.4);
-      box-shadow: 0 0 15px rgba(33,150,243,0.6);
     }
 
     .photo-frame {
@@ -222,27 +198,18 @@
       overflow: hidden;
       box-shadow: 0 15px 40px rgba(0,0,0,0.25);
       border: 10px solid #ffeb3b;
-      position: relative;
-      z-index: 2;
     }
 
     .photo-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .page h2 {
-      font-family: 'Comic Neue', cursive;
-      color: #1976d2;
       font-size: 42px;
-      font-weight: 700;
       margin-bottom: 22px;
       text-shadow: 3px 3px 6px rgba(255,235,59,0.6);
-      letter-spacing: 1px;
-      position: relative;
-      z-index: 2;
     }
 
     .page p {
@@ -255,8 +222,6 @@
       margin-right: auto;
       font-weight: 500;
       font-family: 'Comic Neue', cursive;
-      position: relative;
-      z-index: 2;
     }
 
     .nav-buttons {
@@ -265,8 +230,6 @@
       gap: 18px;
       flex-wrap: wrap;
       margin-top: 35px;
-      position: relative;
-      z-index: 2;
     }
 
     .nav-btn {
@@ -281,21 +244,12 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(33,150,243,0.4);
-      font-family: 'Comic Neue', cursive;
-      letter-spacing: 0.5px;
+      font-family: 'Luckiest Guy', cursive;
     }
 
     .nav-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px rgba(33,150,243,0.6);
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
     }
 
     .final-message {
@@ -305,34 +259,18 @@
       border-radius: 22px;
       margin-top: 25px;
       border: 6px solid #fff;
-      position: relative;
-      z-index: 2;
     }
 
     .final-message h2 {
-      font-family: 'Comic Neue', cursive;
       font-size: 40px;
-      font-weight: 700;
       margin-bottom: 20px;
       text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-      letter-spacing: 1px;
     }
 
     .final-message p {
       font-size: 19px;
       line-height: 1.7;
       font-family: 'Comic Neue', cursive;
-    }
-
-    .page-counter {
-      text-align: center;
-      color: #1976d2;
-      font-size: 16px;
-      margin-top: 25px;
-      font-weight: 600;
-      font-family: 'Comic Neue', cursive;
-      position: relative;
-      z-index: 2;
     }
 
     /* Music toggle */
@@ -348,7 +286,6 @@
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      backdrop-filter: blur(10px);
       border: 4px solid #fff;
       box-shadow: 0 10px 30px rgba(33,150,243,0.4);
       display: flex;
@@ -366,41 +303,23 @@
     /* Responsive */
     @media (max-width: 768px) {
       .gift-text h1 { font-size: 38px; }
-      .gift-text p { font-size: 17px; }
-      .open-btn { padding: 16px 35px; font-size: 19px; }
-      .page { padding: 35px 25px; border-width: 6px; }
       .page h2 { font-size: 34px; }
-      .photo-frame { height: 280px; max-width: 100%; }
-      .nav-buttons { gap: 12px; }
-      .nav-btn { padding: 15px 25px; font-size: 16px; }
-    }
-
-    @media (max-width: 480px) {
-      .container { padding: 15px; }
-      .gift-text h1 { font-size: 32px; }
-      .page { padding: 25px 20px; }
-      .nav-buttons { flex-direction: column; gap: 15px; }
-      .nav-btn { min-width: 100%; }
+      .photo-frame { height: 280px; }
     }
   </style>
 </head>
 <body>
-  <!-- Background music -->
   <audio id="bg-music" loop>
     <source src="music/birthday-song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Floating bananas -->
   <div id="banana-container"></div>
 
   <div class="container">
-    <!-- Starting page with Minion GIF -->
     <div class="gift-wrapper" id="giftWrapper">
       <div class="minion-gif-container" onclick="openGift()">
         <img src="assets/IMG_4103.gif" alt="Happy Birthday Minion">
-        <!-- "Tap Me" overlay REMOVED -->
       </div>
-      
       <div class="gift-text">
         <h1>Happy Birthday bb! 🟡🔵</h1>
         <p>Tap the Minion above for your birthday surprise! 🍌</p>
@@ -408,16 +327,8 @@
       </div>
     </div>
 
-    <!-- Card pages -->
     <div class="card-container" id="cardContainer">
-      <!-- Page 1 -->
       <div class="page active" data-page="1">
-        <div class="step-indicator">
-          <div class="step-dot active"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-        </div>
         <div class="photo-frame">
           <img src="photos/bday1.jpg" alt="Memory 1">
         </div>
@@ -427,17 +338,8 @@
           <button class="nav-btn" onclick="prevPage()" disabled>← Previous</button>
           <button class="nav-btn" onclick="nextPage()">Next →</button>
         </div>
-        <div class="page-counter">1 / 4</div>
       </div>
-
-      <!-- Page 2 -->
       <div class="page" data-page="2">
-        <div class="step-indicator">
-          <div class="step-dot"></div>
-          <div class="step-dot active"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-        </div>
         <div class="photo-frame">
           <img src="photos/bday2.jpg" alt="Memory 2">
         </div>
@@ -447,17 +349,8 @@
           <button class="nav-btn" onclick="prevPage()">← Previous</button>
           <button class="nav-btn" onclick="nextPage()">Next →</button>
         </div>
-        <div class="page-counter">2 / 4</div>
       </div>
-
-      <!-- Page 3 -->
       <div class="page" data-page="3">
-        <div class="step-indicator">
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot active"></div>
-          <div class="step-dot"></div>
-        </div>
         <div class="photo-frame">
           <img src="photos/bday3.jpg" alt="Memory 3">
         </div>
@@ -467,17 +360,8 @@
           <button class="nav-btn" onclick="prevPage()">← Previous</button>
           <button class="nav-btn" onclick="nextPage()">Next →</button>
         </div>
-        <div class="page-counter">3 / 4</div>
       </div>
-
-      <!-- Page 4 -->
       <div class="page" data-page="4">
-        <div class="step-indicator">
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot"></div>
-          <div class="step-dot active"></div>
-        </div>
         <div class="photo-frame">
           <img src="photos/bday4.jpg" alt="Memory 4">
         </div>
@@ -491,12 +375,10 @@
           <button class="nav-btn" onclick="prevPage()">← Previous</button>
           <button class="nav-btn" onclick="location.reload()">Start Over 🔄</button>
         </div>
-        <div class="page-counter">4 / 4</div>
       </div>
     </div>
   </div>
 
-  <!-- Music toggle -->
   <div class="music-toggle paused" id="musicToggle" onclick="toggleMusic()">
     <span>🎵 Music: Off</span>
   </div>
@@ -510,13 +392,10 @@
     function openGift() {
       const wrapper = document.getElementById('giftWrapper');
       const cardContainer = document.getElementById('cardContainer');
-      
       wrapper.style.transition = 'all 0.6s ease';
       wrapper.style.opacity = '0';
       wrapper.style.transform = 'scale(0.8) translateY(-40px)';
-      
       startMusic();
-      
       setTimeout(() => {
         wrapper.style.display = 'none';
         cardContainer.classList.add('active');
@@ -527,7 +406,6 @@
       if (musicStarted || !bgMusic) return;
       musicStarted = true;
       bgMusic.play().catch(() => {});
-      document.getElementById('musicToggle').classList.remove('paused');
       document.getElementById('musicToggle').innerHTML = '<span>🎵 Music: On</span>';
     }
 
@@ -536,11 +414,9 @@
       const toggle = document.getElementById('musicToggle');
       if (bgMusic.paused) {
         bgMusic.play().catch(() => {});
-        toggle.classList.remove('paused');
         toggle.innerHTML = '<span>🎵 Music: On</span>';
       } else {
         bgMusic.pause();
-        toggle.classList.add('paused');
         toggle.innerHTML = '<span>🎵 Music: Off</span>';
       }
     }
@@ -550,7 +426,6 @@
         document.querySelector(`[data-page="${currentPage}"]`).classList.remove('active');
         currentPage++;
         document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
-        updateButtons();
       }
     }
 
@@ -559,34 +434,24 @@
         document.querySelector(`[data-page="${currentPage}"]`).classList.remove('active');
         currentPage--;
         document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
-        updateButtons();
       }
     }
 
-    function updateButtons() {
-      document.querySelectorAll('.nav-buttons').forEach(container => {
-        const prevBtn = container.querySelector('button[onclick="prevPage()"]');
-        const nextBtn = container.querySelector('button[onclick="nextPage()"]');
-        if (prevBtn) prevBtn.disabled = currentPage === 1;
-        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
-      });
-    }
-
-    // Create better floating bananas
     function createBananas() {
       const container = document.getElementById('banana-container');
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < 20; i++) {
         const banana = document.createElement('div');
         banana.className = 'banana';
         banana.style.left = Math.random() * 100 + '%';
-        banana.style.animationDuration = (Math.random() * 3 + 5) + 's';
-        banana.style.animationDelay = Math.random() * 10 + 's';
+        banana.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        banana.style.animationDelay = Math.random() * 5 + 's';
+        banana.style.width = (Math.random() * 15 + 15) + 'px';
+        banana.style.height = (Math.random() * 35 + 35) + 'px';
         container.appendChild(banana);
       }
     }
 
     createBananas();
-    updateButtons();
   </script>
 </body>
 </html>
