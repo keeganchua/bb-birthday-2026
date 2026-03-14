@@ -21,42 +21,36 @@
       user-select: none;
     }
 
-    /* More realistic falling bananas */
-    .banana {
+    /* 🍌 Emoji Banana Rain - More Realistic */
+    .emoji-banana {
       position: fixed;
-      width: 22px;
-      height: 50px;
-      background: #ffed4e;
-      border-radius: 10px 10px 3px 3px;
-      top: -60px;
-      animation: bananaFloat linear infinite;
+      font-size: 28px;
+      top: -50px;
+      animation: bananaFall linear infinite;
       z-index: 1;
-      clip-path: polygon(0% 0%, 100% 0%, 95% 90%, 80% 100%, 20% 100%, 5% 90%);
-      opacity: 0.9;
+      pointer-events: none;
     }
 
-    .banana::before {
-      content: '';
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #8b4513;
-      border-radius: 50%;
-      top: 3px;
-      right: 3px;
-    }
-
-    @keyframes bananaFloat {
+    @keyframes bananaFall {
       0% {
         transform: translateX(0) translateY(0) rotate(0deg) scale(1);
         opacity: 0;
       }
-      10% { opacity: 1; }
-      50% {
-        transform: translateX(40px) translateY(60vh) rotate(360deg) scale(1.1);
+      10% { 
+        opacity: 1; 
+        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
       }
-      100% {
-        transform: translateX(-40px) translateY(120vh) rotate(720deg) scale(0.9);
+      25% { 
+        transform: translateX(-15px) translateY(30vh) rotate(90deg) scale(1.1);
+      }
+      50% { 
+        transform: translateX(25px) translateY(60vh) rotate(360deg) scale(1.2);
+      }
+      75% { 
+        transform: translateX(-20px) translateY(90vh) rotate(540deg) scale(1.05);
+      }
+      100% { 
+        transform: translateX(10px) translateY(120vh) rotate(720deg) scale(0.9);
         opacity: 0;
       }
     }
@@ -71,14 +65,40 @@
       padding: 20px;
     }
 
-    /* Minion font applied */
-    .gift-text h1, .page h2, .final-message h2 {
+    /* EXACT Minions Rise of Gru Font: Black outline + Yellow fill */
+    .minion-font {
       font-family: 'Luckiest Guy', cursive;
-      color: #1976d2;
-      letter-spacing: 2px;
+      font-weight: 700;
+      font-size: inherit;
+      background: linear-gradient(135deg, #FFD700 0%, #FFEB3B 50%, #FFE082 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
     }
 
-    /* Gift setup */
+    .minion-font::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: #000;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      z-index: -1;
+      font-family: 'Luckiest Guy', cursive;
+      font-weight: 700;
+    }
+
+    /* Apply Minion font to all major headings */
+    .gift-text h1, .page h2, .final-message h2, .open-btn, .nav-btn {
+      font-family: 'Luckiest Guy', cursive !important;
+    }
+
     .gift-wrapper {
       position: relative;
       width: 90%;
@@ -116,10 +136,16 @@
     }
 
     .gift-text h1 {
-      font-size: 48px;
-      font-weight: 700;
+      font-size: 52px;
       margin-bottom: 18px;
-      text-shadow: 4px 4px 8px rgba(255,235,59,0.8);
+      text-shadow: none;
+      color: transparent;
+      position: relative;
+      data-text: "Happy Birthday bb! 🟡🔵";
+    }
+
+    .gift-text h1 .minion-font {
+      font-size: 52px;
     }
 
     .gift-text p {
@@ -133,21 +159,21 @@
 
     .open-btn {
       background: linear-gradient(135deg, #ffeb3b 0%, #2196f3 100%);
-      color: #1976d2;
+      color: transparent !important;
       border: 4px solid #ffeb3b;
       padding: 18px 45px;
-      font-size: 22px;
+      font-size: 24px;
       border-radius: 50px;
       cursor: pointer;
-      font-family: 'Luckiest Guy', cursive;
       box-shadow: 0 15px 35px rgba(33,150,243,0.4);
       transition: all 0.3s ease;
+      position: relative;
+      margin-top: 10px;
     }
 
     .open-btn:hover {
       transform: translateY(-5px) scale(1.05);
       box-shadow: 0 20px 45px rgba(33,150,243,0.6);
-      color: #fff;
     }
 
     .card-container {
@@ -207,9 +233,11 @@
     }
 
     .page h2 {
-      font-size: 42px;
+      font-size: 46px;
       margin-bottom: 22px;
-      text-shadow: 3px 3px 6px rgba(255,235,59,0.6);
+      color: transparent;
+      text-shadow: none;
+      position: relative;
     }
 
     .page p {
@@ -240,16 +268,22 @@
       color: white;
       border: 3px solid #ffeb3b;
       border-radius: 50px;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Luckiest Guy', cursive;
+      box-shadow: 0 8px 25px rgba(33,150,243,0.4);
+      position: relative;
     }
 
-    .nav-btn:hover {
+    .nav-btn:hover:not(:disabled) {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px rgba(33,150,243,0.6);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .final-message {
@@ -262,9 +296,10 @@
     }
 
     .final-message h2 {
-      font-size: 40px;
+      font-size: 44px;
       margin-bottom: 20px;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+      color: transparent;
+      text-shadow: none;
     }
 
     .final-message p {
@@ -273,7 +308,6 @@
       font-family: 'Comic Neue', cursive;
     }
 
-    /* Music toggle */
     .music-toggle {
       position: fixed;
       bottom: 25px;
@@ -302,9 +336,16 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .gift-text h1 { font-size: 38px; }
-      .page h2 { font-size: 34px; }
+      .gift-text h1 .minion-font { font-size: 42px; }
+      .page h2 { font-size: 38px; }
+      .final-message h2 { font-size: 36px; }
       .photo-frame { height: 280px; }
+      .emoji-banana { font-size: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-buttons { flex-direction: column; gap: 15px; }
+      .nav-btn { min-width: 100%; }
     }
   </style>
 </head>
@@ -321,59 +362,66 @@
         <img src="assets/IMG_4103.gif" alt="Happy Birthday Minion">
       </div>
       <div class="gift-text">
-        <h1>Happy Birthday bb! 🟡🔵</h1>
+        <h1><span class="minion-font" data-text="Happy Birthday bb! 🟡🔵">Happy Birthday bb! 🟡🔵</span></h1>
         <p>Tap the Minion above for your birthday surprise! 🍌</p>
-        <button class="open-btn" onclick="openGift()">Start Party! 🎉</button>
+        <button class="open-btn minion-font" data-text="Start Party! 🎉">Start Party! 🎉</button>
       </div>
     </div>
 
     <div class="card-container" id="cardContainer">
+      <!-- Page 1 -->
       <div class="page active" data-page="1">
         <div class="photo-frame">
           <img src="photos/bday1.jpg" alt="Memory 1">
         </div>
-        <h2>First Adventure</h2>
+        <h2><span class="minion-font" data-text="First Adventure">First Adventure</span></h2>
         <p>Remember this moment? Every second with you becomes my favorite memory. 🟡🔵</p>
         <div class="nav-buttons">
-          <button class="nav-btn" onclick="prevPage()" disabled>← Previous</button>
-          <button class="nav-btn" onclick="nextPage()">Next →</button>
+          <button class="nav-btn minion-font" onclick="prevPage()" disabled data-text="← Previous">← Previous</button>
+          <button class="nav-btn minion-font" onclick="nextPage()" data-text="Next →">Next →</button>
         </div>
       </div>
+
+      <!-- Page 2 -->
       <div class="page" data-page="2">
         <div class="photo-frame">
           <img src="photos/bday2.jpg" alt="Memory 2">
         </div>
-        <h2>Our Moments</h2>
+        <h2><span class="minion-font" data-text="Our Moments">Our Moments</span></h2>
         <p>Your smile makes every day brighter. Thank you for being you. 🍌</p>
         <div class="nav-buttons">
-          <button class="nav-btn" onclick="prevPage()">← Previous</button>
-          <button class="nav-btn" onclick="nextPage()">Next →</button>
+          <button class="nav-btn minion-font" onclick="prevPage()" data-text="← Previous">← Previous</button>
+          <button class="nav-btn minion-font" onclick="nextPage()" data-text="Next →">Next →</button>
         </div>
       </div>
+
+      <!-- Page 3 -->
       <div class="page" data-page="3">
         <div class="photo-frame">
           <img src="photos/bday3.jpg" alt="Memory 3">
         </div>
-        <h2>Always Together</h2>
+        <h2><span class="minion-font" data-text="Always Together">Always Together</span></h2>
         <p>You make life beautiful. Here's to many more years together. 🟡🔵</p>
         <div class="nav-buttons">
-          <button class="nav-btn" onclick="prevPage()">← Previous</button>
-          <button class="nav-btn" onclick="nextPage()">Next →</button>
+          <button class="nav-btn minion-font" onclick="prevPage()" data-text="← Previous">← Previous</button>
+          <button class="nav-btn minion-font" onclick="nextPage()" data-text="Next →">Next →</button>
         </div>
       </div>
+
+      <!-- Page 4 -->
       <div class="page" data-page="4">
         <div class="photo-frame">
           <img src="photos/bday4.jpg" alt="Memory 4">
         </div>
-        <h2>Happy Birthday Love!</h2>
+        <h2><span class="minion-font" data-text="Happy Birthday Love!">Happy Birthday Love!</span></h2>
         <p>I love you more every day. Thank you for being my everything. 🍌</p>
         <div class="final-message">
-          <h2>Forever Yours 🟡🔵</h2>
+          <h2><span class="minion-font" data-text="Forever Yours 🟡🔵">Forever Yours 🟡🔵</span></h2>
           <p>Today, tomorrow, always. Happy Birthday my love!</p>
         </div>
         <div class="nav-buttons">
-          <button class="nav-btn" onclick="prevPage()">← Previous</button>
-          <button class="nav-btn" onclick="location.reload()">Start Over 🔄</button>
+          <button class="nav-btn minion-font" onclick="prevPage()" data-text="← Previous">← Previous</button>
+          <button class="nav-btn minion-font" onclick="location.reload()" data-text="Start Over 🔄">Start Over 🔄</button>
         </div>
       </div>
     </div>
@@ -406,6 +454,7 @@
       if (musicStarted || !bgMusic) return;
       musicStarted = true;
       bgMusic.play().catch(() => {});
+      document.getElementById('musicToggle').classList.remove('paused');
       document.getElementById('musicToggle').innerHTML = '<span>🎵 Music: On</span>';
     }
 
@@ -414,9 +463,11 @@
       const toggle = document.getElementById('musicToggle');
       if (bgMusic.paused) {
         bgMusic.play().catch(() => {});
+        toggle.classList.remove('paused');
         toggle.innerHTML = '<span>🎵 Music: On</span>';
       } else {
         bgMusic.pause();
+        toggle.classList.add('paused');
         toggle.innerHTML = '<span>🎵 Music: Off</span>';
       }
     }
@@ -426,6 +477,7 @@
         document.querySelector(`[data-page="${currentPage}"]`).classList.remove('active');
         currentPage++;
         document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
+        updateButtons();
       }
     }
 
@@ -434,24 +486,51 @@
         document.querySelector(`[data-page="${currentPage}"]`).classList.remove('active');
         currentPage--;
         document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
+        updateButtons();
       }
     }
 
-    function createBananas() {
+    function updateButtons() {
+      document.querySelectorAll('.nav-btn[onclick="prevPage()"]').forEach(btn => {
+        btn.disabled = currentPage === 1;
+      });
+    }
+
+    // Create falling 🍌 emoji bananas
+    function createBananaRain() {
       const container = document.getElementById('banana-container');
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 25; i++) {
         const banana = document.createElement('div');
-        banana.className = 'banana';
+        banana.className = 'emoji-banana';
+        banana.textContent = '🍌';
         banana.style.left = Math.random() * 100 + '%';
-        banana.style.animationDuration = (Math.random() * 4 + 6) + 's';
-        banana.style.animationDelay = Math.random() * 5 + 's';
-        banana.style.width = (Math.random() * 15 + 15) + 'px';
-        banana.style.height = (Math.random() * 35 + 35) + 'px';
+        banana.style.animationDuration = (Math.random() * 5 + 8) + 's';
+        banana.style.animationDelay = Math.random() * 10 + 's';
         container.appendChild(banana);
       }
     }
 
-    createBananas();
+    // Keep creating new bananas
+    setInterval(() => {
+      const container = document.getElementById('banana-container');
+      const newBanana = document.createElement('div');
+      newBanana.className = 'emoji-banana';
+      newBanana.textContent = '🍌';
+      newBanana.style.left = Math.random() * 100 + '%';
+      newBanana.style.animationDuration = (Math.random() * 5 + 8) + 's';
+      newBanana.style.animationDelay = '0s';
+      container.appendChild(newBanana);
+
+      // Remove old bananas
+      setTimeout(() => {
+        if (newBanana.parentNode) {
+          newBanana.remove();
+        }
+      }, 15000);
+    }, 2000);
+
+    createBananaRain();
+    updateButtons();
   </script>
 </body>
 </html>
