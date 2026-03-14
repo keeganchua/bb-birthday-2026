@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday bb! 🟡🔵</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comic+Neue:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,41 +13,42 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Comic Neue', cursive;
       background: linear-gradient(135deg, #ffeb3b 0%, #ffeb3b 35%, #2196f3 100%);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Floating bananas */
+    /* Better looking falling bananas */
     .banana {
       position: fixed;
-      width: 25px;
-      height: 50px;
-      background: linear-gradient(45deg, #ffd700, #ffed4e);
-      border-radius: 12px 12px 4px 4px;
-      top: -60px;
-      animation: bananaFloat 8s linear infinite;
+      width: 18px;
+      height: 42px;
+      background: #ffed4e;
+      border-radius: 9px 9px 3px 3px;
+      top: -50px;
+      animation: bananaFloat 7s linear infinite;
       z-index: 1;
+      clip-path: polygon(0% 0%, 100% 0%, 95% 90%, 80% 100%, 20% 100%, 5% 90%);
     }
 
     .banana::before {
       content: '';
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       background: #8b4513;
       border-radius: 50%;
-      top: 4px;
-      right: 4px;
+      top: 3px;
+      right: 3px;
     }
 
     @keyframes bananaFloat {
       0% { transform: translateY(0) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
       90% { opacity: 1; }
-      100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+      100% { transform: translateY(120vh) rotate(720deg); opacity: 0; }
     }
 
     .container {
@@ -60,7 +61,7 @@
       padding: 20px;
     }
 
-    /* Starting page with Minion GIF */
+    /* Starting page with Minion GIF - NO "Tap Me" overlay */
     .gift-wrapper {
       position: relative;
       width: 90%;
@@ -97,28 +98,15 @@
       display: block;
     }
 
-    .gif-overlay {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: #ffeb3b;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 16px;
-      font-family: 'Dancing Script', cursive;
-      pointer-events: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
+    /* Minion-style font for headings */
     .gift-text h1 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Comic Neue', cursive;
       color: #1976d2;
       font-size: 48px;
+      font-weight: 700;
       margin-bottom: 18px;
-      text-shadow: 3px 3px 6px rgba(255,235,59,0.8);
+      text-shadow: 4px 4px 8px rgba(255,235,59,0.8);
+      letter-spacing: 2px;
     }
 
     .gift-text p {
@@ -127,6 +115,7 @@
       margin-bottom: 30px;
       line-height: 1.6;
       font-weight: 500;
+      font-family: 'Comic Neue', cursive;
     }
 
     .open-btn {
@@ -137,10 +126,11 @@
       font-size: 22px;
       border-radius: 50px;
       cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Comic Neue', cursive;
       font-weight: 700;
       box-shadow: 0 15px 35px rgba(33,150,243,0.4);
       transition: all 0.3s ease;
+      letter-spacing: 1px;
     }
 
     .open-btn:hover {
@@ -244,11 +234,13 @@
     }
 
     .page h2 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Comic Neue', cursive;
       color: #1976d2;
       font-size: 42px;
+      font-weight: 700;
       margin-bottom: 22px;
-      text-shadow: 2px 2px 4px rgba(255,235,59,0.6);
+      text-shadow: 3px 3px 6px rgba(255,235,59,0.6);
+      letter-spacing: 1px;
       position: relative;
       z-index: 2;
     }
@@ -262,6 +254,7 @@
       margin-left: auto;
       margin-right: auto;
       font-weight: 500;
+      font-family: 'Comic Neue', cursive;
       position: relative;
       z-index: 2;
     }
@@ -285,11 +278,12 @@
       border: 3px solid #ffeb3b;
       border-radius: 50px;
       font-size: 17px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 8px 25px rgba(33,150,243,0.4);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Comic Neue', cursive;
+      letter-spacing: 0.5px;
     }
 
     .nav-btn:hover {
@@ -316,14 +310,18 @@
     }
 
     .final-message h2 {
+      font-family: 'Comic Neue', cursive;
       font-size: 40px;
+      font-weight: 700;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
     }
 
     .final-message p {
       font-size: 19px;
       line-height: 1.7;
+      font-family: 'Comic Neue', cursive;
     }
 
     .page-counter {
@@ -332,11 +330,12 @@
       font-size: 16px;
       margin-top: 25px;
       font-weight: 600;
+      font-family: 'Comic Neue', cursive;
       position: relative;
       z-index: 2;
     }
 
-    /* Music toggle - Minion style */
+    /* Music toggle */
     .music-toggle {
       position: fixed;
       bottom: 25px;
@@ -356,6 +355,7 @@
       align-items: center;
       gap: 10px;
       transition: all 0.3s ease;
+      font-family: 'Comic Neue', cursive;
     }
 
     .music-toggle:hover {
@@ -398,7 +398,7 @@
     <div class="gift-wrapper" id="giftWrapper">
       <div class="minion-gif-container" onclick="openGift()">
         <img src="assets/IMG_4103.gif" alt="Happy Birthday Minion">
-        <div class="gif-overlay">Tap Me! 👀</div>
+        <!-- "Tap Me" overlay REMOVED -->
       </div>
       
       <div class="gift-text">
@@ -572,15 +572,15 @@
       });
     }
 
-    // Create floating bananas
+    // Create better floating bananas
     function createBananas() {
       const container = document.getElementById('banana-container');
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 15; i++) {
         const banana = document.createElement('div');
         banana.className = 'banana';
         banana.style.left = Math.random() * 100 + '%';
-        banana.style.animationDuration = (Math.random() * 3 + 6) + 's';
-        banana.style.animationDelay = Math.random() * 8 + 's';
+        banana.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        banana.style.animationDelay = Math.random() * 10 + 's';
         container.appendChild(banana);
       }
     }
