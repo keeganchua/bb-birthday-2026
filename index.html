@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday bb! 🟡🔵</title>
+  <title>Happy Birthday bb!</title>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -21,11 +21,11 @@
       user-select: none;
     }
 
-    /* 🍌 Emoji Banana Rain */
+    /* BIG 🍌 Emoji Banana Rain */
     .emoji-banana {
       position: fixed;
-      font-size: 28px;
-      top: -50px;
+      font-size: 44px; /* bigger bananas */
+      top: -60px;
       animation: bananaFall linear infinite;
       z-index: 1;
       pointer-events: none;
@@ -37,10 +37,10 @@
         opacity: 0;
       }
       10% { opacity: 1; }
-      25% { transform: translateX(-15px) translateY(30vh) rotate(90deg) scale(1.1); }
-      50% { transform: translateX(25px) translateY(60vh) rotate(360deg) scale(1.2); }
-      75% { transform: translateX(-20px) translateY(90vh) rotate(540deg) scale(1.05); }
-      100% { transform: translateX(10px) translateY(120vh) rotate(720deg) scale(0.9); opacity: 0; }
+      25% { transform: translateX(-20px) translateY(30vh) rotate(90deg) scale(1.1); }
+      50% { transform: translateX(30px) translateY(60vh) rotate(360deg) scale(1.25); }
+      75% { transform: translateX(-25px) translateY(90vh) rotate(540deg) scale(1.1); }
+      100% { transform: translateX(15px) translateY(120vh) rotate(720deg) scale(0.95); opacity: 0; }
     }
 
     .container {
@@ -53,7 +53,7 @@
       padding: 20px;
     }
 
-    /* PERFECT Minions Font: Thick Black Outline + Solid Yellow Fill */
+    /* Minions-style font: thick black outline + yellow fill */
     .minion-font {
       position: relative;
       display: inline-block;
@@ -64,7 +64,6 @@
       letter-spacing: 1px;
     }
 
-    /* Black outline layer (THICKER) */
     .minion-font::before {
       content: attr(data-text);
       position: absolute;
@@ -72,11 +71,12 @@
       left: 0;
       z-index: -2;
       color: #000;
-      font-family: 'Luckiest Guy', cursive !important;
+      font-family: 'Luckiest+Guy', cursive;
       font-weight: 900;
       font-size: inherit;
       line-height: inherit;
-      text-shadow: 
+      text-transform: uppercase;
+      text-shadow:
         -3px -3px 0 #000,
         3px -3px 0 #000,
         -3px 3px 0 #000,
@@ -89,10 +89,8 @@
         2px -2px 0 #000,
         -2px 2px 0 #000,
         2px 2px 0 #000;
-      text-transform: uppercase;
     }
 
-    /* Additional black shadow for extra thickness */
     .minion-font::after {
       content: attr(data-text);
       position: absolute;
@@ -100,19 +98,18 @@
       left: 0;
       z-index: -1;
       color: #000;
-      font-family: 'Luckiest Guy', cursive !important;
+      font-family: 'Luckiest Guy', cursive;
       font-weight: 900;
       font-size: inherit;
       line-height: inherit;
-      text-shadow: 
+      text-transform: uppercase;
+      text-shadow:
         -2px -2px 0 #000,
         2px -2px 0 #000,
         -2px 2px 0 #000,
         2px 2px 0 #000;
-      text-transform: uppercase;
     }
 
-    /* Solid YELLOW center */
     .minion-font span {
       position: relative;
       z-index: 1;
@@ -120,11 +117,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      color: #FFEB3B;
       font-family: 'Luckiest Guy', cursive !important;
       font-weight: 900;
-      text-shadow: none;
       text-transform: uppercase;
+      text-shadow: none;
     }
 
     .gift-wrapper {
@@ -146,12 +142,7 @@
       position: relative;
       margin: 0 auto 30px;
       max-width: 340px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .minion-gif-container:hover {
-      transform: scale(1.05);
+      cursor: default; /* cannot tap GIF anymore */
     }
 
     .minion-gif-container img {
@@ -168,7 +159,8 @@
     }
 
     .gift-text h1 .minion-font {
-      font-size: 52px;
+      font-size: 40px;
+      line-height: 1.15;
     }
 
     .gift-text p {
@@ -178,6 +170,7 @@
       line-height: 1.6;
       font-weight: 500;
       font-family: 'Comic Neue', cursive;
+      display: none; /* removed helper text */
     }
 
     .open-btn {
@@ -283,7 +276,6 @@
       min-width: 140px;
       padding: 18px 30px;
       background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
-      border: 3px solid #ffeb3b;
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -347,13 +339,9 @@
       box-shadow: 0 15px 40px rgba(33,150,243,0.6);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .gift-text h1 .minion-font { font-size: 42px; }
-      .page h2 .minion-font { font-size: 36px; }
-      .final-message h2 .minion-font { font-size: 34px; }
-      .photo-frame { height: 280px; }
-      .emoji-banana { font-size: 24px; }
+      .gift-text h1 .minion-font { font-size: 34px; }
+      .emoji-banana { font-size: 38px; }
     }
 
     @media (max-width: 480px) {
@@ -371,87 +359,128 @@
 
   <div class="container">
     <div class="gift-wrapper" id="giftWrapper">
-      <div class="minion-gif-container" onclick="openGift()">
+      <div class="minion-gif-container">
         <img src="assets/IMG_4103.gif" alt="Happy Birthday Minion">
       </div>
       <div class="gift-text">
-        <h1><div class="minion-font" data-text="Happy Birthday bb! 🟡🔵"><span>Happy Birthday bb! 🟡🔵</span></div></h1>
-        <p>Tap the Minion above for your birthday surprise! 🍌</p>
+        <h1>
+          <div class="minion-font" data-text="Welcome to the 30s club">
+            <span>Welcome to the 30s club</span>
+          </div>
+        </h1>
+
+        <!-- helper text removed -->
+
         <button class="open-btn" onclick="openGift()">
-          <div class="minion-font" data-text="Start Party! 🎉"><span>Start Party! 🎉</span></div>
+          <div class="minion-font" data-text="Start Party! 🎉">
+            <span>Start Party! 🎉</span>
+          </div>
         </button>
       </div>
     </div>
 
+    <!-- Card pages stay same as your last version -->
     <div class="card-container" id="cardContainer">
-      <!-- Page 1 -->
       <div class="page active" data-page="1">
         <div class="photo-frame">
           <img src="photos/bday1.jpg" alt="Memory 1">
         </div>
-        <h2><div class="minion-font" data-text="First Adventure"><span>First Adventure</span></div></h2>
-        <p>Remember this moment? Every second with you becomes my favorite memory. 🟡🔵</p>
+        <h2>
+          <div class="minion-font" data-text="First Adventure">
+            <span>First Adventure</span>
+          </div>
+        </h2>
+        <p>Remember this moment? Every second with you becomes my favorite memory.</p>
         <div class="nav-buttons">
           <button class="nav-btn" onclick="prevPage()" disabled>
-            <div class="minion-font" data-text="← Previous"><span>← Previous</span></div>
+            <div class="minion-font" data-text="← Previous">
+              <span>← Previous</span>
+            </div>
           </button>
           <button class="nav-btn" onclick="nextPage()">
-            <div class="minion-font" data-text="Next →"><span>Next →</span></div>
+            <div class="minion-font" data-text="Next →">
+              <span>Next →</span>
+            </div>
           </button>
         </div>
       </div>
 
-      <!-- Page 2 -->
       <div class="page" data-page="2">
         <div class="photo-frame">
           <img src="photos/bday2.jpg" alt="Memory 2">
         </div>
-        <h2><div class="minion-font" data-text="Our Moments"><span>Our Moments</span></div></h2>
-        <p>Your smile makes every day brighter. Thank you for being you. 🍌</p>
+        <h2>
+          <div class="minion-font" data-text="Our Moments">
+            <span>Our Moments</span>
+          </div>
+        </h2>
+        <p>Your smile makes every day brighter. Thank you for being you.</p>
         <div class="nav-buttons">
           <button class="nav-btn" onclick="prevPage()">
-            <div class="minion-font" data-text="← Previous"><span>← Previous</span></div>
+            <div class="minion-font" data-text="← Previous">
+              <span>← Previous</span>
+            </div>
           </button>
           <button class="nav-btn" onclick="nextPage()">
-            <div class="minion-font" data-text="Next →"><span>Next →</span></div>
+            <div class="minion-font" data-text="Next →">
+              <span>Next →</span>
+            </div>
           </button>
         </div>
       </div>
 
-      <!-- Page 3 -->
       <div class="page" data-page="3">
         <div class="photo-frame">
           <img src="photos/bday3.jpg" alt="Memory 3">
         </div>
-        <h2><div class="minion-font" data-text="Always Together"><span>Always Together</span></div></h2>
-        <p>You make life beautiful. Here's to many more years together. 🟡🔵</p>
+        <h2>
+          <div class="minion-font" data-text="Always Together">
+            <span>Always Together</span>
+          </div>
+        </h2>
+        <p>You make life beautiful. Here's to many more years together.</p>
         <div class="nav-buttons">
           <button class="nav-btn" onclick="prevPage()">
-            <div class="minion-font" data-text="← Previous"><span>← Previous</span></div>
+            <div class="minion-font" data-text="← Previous">
+              <span>← Previous</span>
+            </div>
           </button>
           <button class="nav-btn" onclick="nextPage()">
-            <div class="minion-font" data-text="Next →"><span>Next →</span></div>
+            <div class="minion-font" data-text="Next →">
+              <span>Next →</span>
+            </div>
           </button>
         </div>
       </div>
 
-      <!-- Page 4 -->
       <div class="page" data-page="4">
         <div class="photo-frame">
           <img src="photos/bday4.jpg" alt="Memory 4">
         </div>
-        <h2><div class="minion-font" data-text="Happy Birthday Love!"><span>Happy Birthday Love!</span></div></h2>
-        <p>I love you more every day. Thank you for being my everything. 🍌</p>
+        <h2>
+          <div class="minion-font" data-text="Happy Birthday Love!">
+            <span>Happy Birthday Love!</span>
+          </div>
+        </h2>
+        <p>I love you more every day. Thank you for being my everything.</p>
         <div class="final-message">
-          <h2><div class="minion-font" data-text="Forever Yours 🟡🔵"><span>Forever Yours 🟡🔵</span></div></h2>
+          <h2>
+            <div class="minion-font" data-text="Forever Yours">
+              <span>Forever Yours</span>
+            </div>
+          </h2>
           <p>Today, tomorrow, always. Happy Birthday my love!</p>
         </div>
         <div class="nav-buttons">
           <button class="nav-btn" onclick="prevPage()">
-            <div class="minion-font" data-text="← Previous"><span>← Previous</span></div>
+            <div class="minion-font" data-text="← Previous">
+              <span>← Previous</span>
+            </div>
           </button>
           <button class="nav-btn" onclick="location.reload()">
-            <div class="minion-font" data-text="Start Over 🔄"><span>Start Over 🔄</span></div>
+            <div class="minion-font" data-text="Start Over 🔄">
+              <span>Start Over 🔄</span>
+            </div>
           </button>
         </div>
       </div>
@@ -522,9 +551,11 @@
     }
 
     function updateButtons() {
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        const isPrev = btn.onclick.toString().includes('prevPage');
-        btn.disabled = isPrev ? currentPage === 1 : currentPage === totalPages;
+      document.querySelectorAll('.nav-buttons').forEach(container => {
+        const prevBtn = container.querySelector('button[onclick="prevPage()"]');
+        const nextBtn = container.querySelector('button[onclick="nextPage()"]');
+        if (prevBtn) prevBtn.disabled = currentPage === 1;
+        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
       });
     }
 
